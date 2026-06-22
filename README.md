@@ -1,5 +1,5 @@
 # Tamino1230's new Portfolio
 
-> [!INFO]
+> [!NOTE]
 > Hours worked on (adjust):
 > 23
