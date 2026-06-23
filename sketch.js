@@ -332,7 +332,7 @@ function draw() {
 
     pop();
 
-    player._drawMobileUI();
+
     cursor.draw();
     // cursorInspectPopup.draw();
 
@@ -345,7 +345,7 @@ function draw() {
     wHintHelper.update();
     // cursorInspectPopup.update();
 
-    // showDebugCursor();
+    showDebugCursor();
 
     if (player.y >= 1070) {
         disaster()
@@ -357,23 +357,14 @@ function windowResized() {
     resizeCanvas(windowWidth, 600);
 }
 
-f// Computer click handler
-function mousePressed() {
-    if (cursor) cursor.activateImpact();
+function mouseClicked(event) {
+    cursor.activateImpact()
 }
 
-// Mobile/Tablet tap trigger
-function touchStarted() {
-    if (cursor) cursor.activateImpact();
-    // Prevents mobile browsers from intercepting or zooming double-taps
-    return false; 
-}
-
-// Cleanup touch action when hands are off the display
 function keyReleased() {
-    if (key === 'w' || (player && key === player.navigation["up"])) {
+    if (key === 'w' || key === player.navigation["up"]) {
         isLookingUp = false;
-        buildLevel(false, chaos);
+        buildLevel(false, grey=chaos);
         upsidePopup.visible = false;
     }
 }
