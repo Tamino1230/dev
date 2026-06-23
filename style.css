@@ -1,6 +1,6 @@
 
 :root {
-    --main-bg-color: black;
+    --main-bg-color: rgb(23, 23, 36);
     --main-text-color: white;
     --main-accent-color: #8907a3;
     --main-text-highlighted: #e259fd;
@@ -785,4 +785,9 @@ body {
 .grid-block.show {
     opacity: 1;
     transform: scale(1.02) rotateY(0deg);
+}
+
+/* P5.JS */
+canvas {
+  
 }
