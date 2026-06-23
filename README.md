@@ -2,4 +2,4 @@
 
 > [!NOTE]
 > Hours worked on (adjust):
-> 37
+> 40
