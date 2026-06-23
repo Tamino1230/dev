@@ -357,14 +357,23 @@ function windowResized() {
     resizeCanvas(windowWidth, 600);
 }
 
-function mouseClicked(event) {
-    cursor.activateImpact()
+f// Computer click handler
+function mousePressed() {
+    if (cursor) cursor.activateImpact();
 }
 
+// Mobile/Tablet tap trigger
+function touchStarted() {
+    if (cursor) cursor.activateImpact();
+    // Prevents mobile browsers from intercepting or zooming double-taps
+    return false; 
+}
+
+// Cleanup touch action when hands are off the display
 function keyReleased() {
-    if (key === 'w' || key === player.navigation["up"]) {
+    if (key === 'w' || (player && key === player.navigation["up"])) {
         isLookingUp = false;
-        buildLevel(false, grey=chaos);
+        buildLevel(false, chaos);
         upsidePopup.visible = false;
     }
 }
