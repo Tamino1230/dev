@@ -117,22 +117,43 @@ class Player {
         return false;
     }
 
+    _checkMobileInput(direction) {
+        if (!touches || touches.length === 0) return false;
+
+        for (let t of touches) {
+            if (direction === "left") {
+                if (t.x > 20 && t.x < 120 && t.y > height - 120 && t.y < height - 20) {
+                    return true;
+                }
+            }
+            if (direction === "right") {
+                if (t.x > 140 && t.x < 240 && t.y > height - 120 && t.y < height - 20) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     update() {
         this.animations[this.currentAnimation].update();
         this._apply_gravity();
 
         this.isWalking = false;
 
+        let moveLeft = keyIsDown(this.navigation["left"]) || this._checkMobileInput("left");
+        let moveRight = keyIsDown(this.navigation["right"]) || this._checkMobileInput("right");
+
         // Movement LEFT
-        if (keyIsDown(this.navigation["left"])) {
-            if (this.x <= 177) { return };
+        if (moveLeft) {
+            if (this.x <= 177) { return; }
             this.x -= this.speed;
             this.isWalkingLeft = true;
             this.isWalking = true;
             this.isIdling = false;
         // Movement RIGHT
-        } else if (keyIsDown(this.navigation["right"])) {
-            if (this.x >= 822) { return };
+        } else if (moveRight) {
+            if (this.x >= 822) { return; }
             this.x += this.speed;
             this.isWalkingLeft = false;
             this.isIdling = false;
@@ -166,5 +187,26 @@ class Player {
             rect(this.x, this.y, this.hitboxW, this.hitboxH);
             pop();
         }
+    }
+
+    _drawMobileUI() {
+        push();
+        rectMode(CORNER);
+        ellipseMode(CENTER);
+        
+        // Left Button
+        fill(200, 200, 200, 150);
+        rect(20, height - 120, 100, 100, 20);
+        fill(50);
+        textAlign(CENTER, CENTER);
+        textSize(30);
+        text("◀", 70, height - 70);
+
+        // Right Button
+        fill(200, 200, 200, 150);
+        rect(140, height - 120, 100, 100, 20);
+        fill(50);
+        text("▶", 190, height - 70);
+        pop();
     }
 }

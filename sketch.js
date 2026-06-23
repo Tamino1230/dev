@@ -332,7 +332,7 @@ function draw() {
 
     pop();
 
-
+    player._drawMobileUI();
     cursor.draw();
     // cursorInspectPopup.draw();
 
@@ -345,7 +345,7 @@ function draw() {
     wHintHelper.update();
     // cursorInspectPopup.update();
 
-    showDebugCursor();
+    // showDebugCursor();
 
     if (player.y >= 1070) {
         disaster()
