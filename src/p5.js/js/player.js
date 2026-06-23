@@ -166,6 +166,5 @@ class Player {
             rect(this.x, this.y, this.hitboxW, this.hitboxH);
             pop();
         }
-
     }
 }

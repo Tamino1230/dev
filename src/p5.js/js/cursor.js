@@ -11,21 +11,42 @@ class Cursor {
         this.cursorImg;
         this.cursorImgImpact;
         this.currentCursor;
+        this.x;
+        this.y;
+        this.cursorInspectPopup;
 
+        this._buildPopup();
         noCursor();
+    }
+
+    _buildPopup() {
+        this.cursorInspectPopup = new Popup({
+            target: this,
+            text: "Hover to inspect!",
+            offset: 10,
+            bgColor: color(180, 180, 180)
+        })
     }
 
     draw() {
         if (!this.currentCursor) {return}
+
+        this.x = mouseX;
+        this.y = mouseY;
+
         let mouseSpeedX = mouseX - pmouseX;
-        let tiltAmount = map(mouseSpeedX, -50, 50, -0.25, 0.25, true);
+        let tiltAmount = map(mouseSpeedX, -50, 50, -43, 43, true);
 
         push();
-        translate(mouseX, mouseY); 
+        angleMode(DEGREES);
+        translate(this.x, this.y); 
         rotate(tiltAmount); 
         imageMode(CENTER);
         image(this.currentCursor, 0, 0, 64, 64); 
         pop();
+
+        this.cursorInspectPopup.draw()
+        this.cursorInspectPopup.update()
     }
 
     async preload() {

@@ -1,3 +1,4 @@
+
 class Popup {
     constructor(config = {}) {
         this.x = config.x || 0;
@@ -18,6 +19,36 @@ class Popup {
         this.bgColor = config.bgColor || color(23, 23, 36, 220); 
         this.textColor = config.textColor || color(255);
         this.visible = true;
+        this.hoverText = config.hoverText || null;
+        this.TextXOffset = config.TextXOffset || 0;
+        this.TextYOffset = config.TextYOffset || 0
+        this.hoverAction = config.hoverAction || this.pass()
+        this.alreadyHovered = false;
+    }
+
+    pass() {
+        return
+    }
+
+    isHoveringOver() {
+        // Fixed the casing on hoverText here:
+        if (!this.visible || !this.hoverText) return false; 
+
+        let leftBound = this.x - this.w / 2;
+        let rightBound = this.x + this.w / 2;
+        let topBound = this.y - this.h / 2;
+        let bottomBound = this.y + this.h / 2;
+
+        let isHovering = (mouseX >= leftBound &&
+                    mouseX <= rightBound &&
+                    worldMouseY >= topBound &&
+                    worldMouseY <= bottomBound)
+        
+        if (!isHovering) {
+            this.alreadyHovered = false;
+        }
+
+        return (isHovering);
     }
 
     update() {
@@ -60,7 +91,21 @@ class Popup {
             textSize(12);
             text(this.text, this.x, this.y + textYOffset);
         }
-        
+
         pop();
+
+        if (this.hoverText) {
+            if (this.isHoveringOver()) {
+                if (this.hoverAction && !this.alreadyHovered) {
+                    this.alreadyHovered = true;
+                    this.hoverAction();
+                }
+                let textYOffset = this.img ? this.imgH / 2 : 0;
+                fill(this.textColor);
+                textSize(24);
+                text(this.hoverText, this.x - this.TextXOffset, this.y - textYOffset - this.TextYOffset - 30)
+                // console.log("now")
+            }
+        }
     }
 }

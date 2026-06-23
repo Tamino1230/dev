@@ -114,8 +114,8 @@ function showContact() {
     currentPage = "contact";
 }
 
-function showPage(name) {
-    if (currentPage === name) {
+function showPage(name, forceAnimation=false) {
+    if (currentPage === name && !forceAnimation) {
         return;
         console.warn("Already here!");
     }
