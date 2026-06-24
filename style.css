@@ -10,6 +10,7 @@
 
 html, body {
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 [hidden] {
@@ -787,7 +788,106 @@ body {
     transform: scale(1.02) rotateY(0deg);
 }
 
+/* Personal Page */
 /* P5.JS */
 canvas {
   
+}
+
+.reminder {
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+    margin-top: 25px;
+}
+
+.container-reminder {
+    display: block;
+    margin-top: 50px;
+}
+
+.reminder-btn {
+    font-family: LatoBlack;
+    color: white;
+    background-color: transparent;
+    border-radius: 20px;
+    border: 2px solid var(--main-text-highlighted);
+    text-decoration: none;
+    padding: 20px 10px 20px 10px;
+    transition: all 0.25s;
+}
+
+.reminder-btn:hover {
+    transform: scale(1.05);
+    background-color: var(--secondary-text-highlighted);
+    cursor: pointer;
+
+    transition: all 0.25s;
+}
+
+.favorite-page {
+    display: block;
+    justify-items: center;
+    height: 67vh;
+    /* background-color: yellowgreen; */
+}
+
+.favorite-page.book {
+    height: 95vh;
+}
+
+.favorite-container {
+    /* background-color: red; */
+    font-family: LatoBlack;
+    justify-items: center;
+}
+
+.favorite-hero {
+    font-size: 50px;
+    color: white;
+    justify-items: center;
+    border-bottom: 15px groove white;
+}
+
+.favorite-hero.dino {
+    border-bottom: 15px groove green;
+}
+
+.favorite-hero.anime {
+    border-bottom: 15px groove #e60a53;
+}
+
+.favorite-hero.book {
+    border-bottom: 15px groove #c4c70a;
+}
+
+.favorite-hero.game {
+    border-bottom: 15px groove #c70a0a;
+}
+
+.favorite-hero.music {
+    border-bottom: 15px groove #1481da;
+}
+
+.favorite-hero.pets {
+    border-bottom: 15px groove #eb7310;
+}
+
+
+.favorite-content {
+    margin-top: 50px;
+}
+
+.favorite-content.music {
+    margin-left: -300px;
+}
+
+.source {
+    color: #aaaaaa;
+    font-size: 10px;
+}
+
+.favorite-page.dino {
+
 }

@@ -129,11 +129,16 @@ function buildCredits() {
 }
 
 function toggleSong() {
-    songIsPlaying = !songIsPlaying
-    if (songIsPlaying) {
-        song.play();
-    } else {
-        song.stop();
+    let popupY = 750;
+    let isVisibleInCamera = popupY >= cameraY && popupY <= (cameraY + height);
+
+    if (isVisibleInCamera) {
+        songIsPlaying = !songIsPlaying
+        if (songIsPlaying) {
+            song.play();
+        } else {
+            song.stop();
+        }
     }
 }
 

@@ -228,7 +228,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     console.log("DOM fully loaded and parsed");
     // showStart();
     displayAge();
-    showProfessional();
+    showPersonal();
     createAnimationGrid();
     cycleText("visitor", ["Visitor", "Traveler", "Friend", "Dinosaur", "Alien", "Guest", "Human", "Fella"], 6700);
     cycleText("nickname", ["Tamino1230", "Dinosaur LOVER", "Tamii<3", "TamTam", "Gangle/Kinger", "This weird guy"], 4300); 
