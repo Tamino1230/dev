@@ -144,17 +144,16 @@ function showPage(name, forceAnimation=false) {
 }
 
 function createAnimationGrid() {
+    if (document.getElementById('grid-overlay')) return;
+
     overlay = document.createElement('div');
     overlay.id = 'grid-overlay';
     overlay.hidden = true;
     document.body.appendChild(overlay);
 
+    // Define a clean, fixed grid structure
     const cols = 10;
-    
-    // SIZE
-    const blockHeightInPx = window.innerWidth / cols;
-    const rows = Math.ceil(window.innerHeight / blockHeightInPx); 
-    
+    const rows = 10; 
     const totalBlocks = rows * cols;
 
     for (let i = 0; i < totalBlocks; i++) {
@@ -197,6 +196,15 @@ function endTransition() {
     }, 1000);
 }
 
+function displayAge() {
+    let now = new Date();
+    let past = new Date("July 17, 2009");
+
+    let years = now.getFullYear() - past.getFullYear() -1;
+
+    document.getElementById("years-old").innerText = `${years} years`
+}
+
 
 // Start Page
 function cycleText(elementId, words, interval = 2000) {
@@ -219,7 +227,8 @@ function cycleText(elementId, words, interval = 2000) {
 document.addEventListener("DOMContentLoaded", (event) => {
     console.log("DOM fully loaded and parsed");
     // showStart();
-    showPersonal();
+    displayAge();
+    showProfessional();
     createAnimationGrid();
     cycleText("visitor", ["Visitor", "Traveler", "Friend", "Dinosaur", "Alien", "Guest", "Human", "Fella"], 6700);
     cycleText("nickname", ["Tamino1230", "Dinosaur LOVER", "Tamii<3", "TamTam", "Gangle/Kinger", "This weird guy"], 4300); 

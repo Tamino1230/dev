@@ -187,7 +187,7 @@ async function buildPopups() {
         x: 300,
         y: 400,
         text: "I really love to draw\nHere i draw a Spinosaurus<3",
-        hoverText: "(i just cant draw digitally)",
+        hoverText: "I love dinosaurs",
         TextXOffset: 130
     }));
 
@@ -208,7 +208,7 @@ async function buildPopups() {
         imgH: 120*2.5,
         x: 300,
         y: 825,
-        text: "\nI can't really draw humans butttttt should workk",
+        text: "\nI spend much time drawing details",
         hoverText: "Thats my girlfriend btw",
         TextXOffset: 122
     }));
@@ -242,6 +242,7 @@ function generateRandomString() {
 function disaster() {
     chaos = true
     song.stop();
+    buildLevel(false, true);
     popups.reverse().forEach((popup, i) => {
         setTimeout(() => {
             popup.img = four0four;
