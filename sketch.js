@@ -265,6 +265,7 @@ function disaster() {
 
 function screenAnimation() {
     showPage("start", forceAnimation=false);
+    setTimeout(() => document.getElementById("reminder")?.remove(), 1000);
     setTimeout(() => canvas.remove(), 1000)
     setTimeout(() => document.getElementById("personal-btn").innerText = "p̶̜̏e̵̟̒ȑ̴̞s̸͇͆o̸̚ͅn̵̼͑a̶̝͘l̴͔̕", 1000)
 }

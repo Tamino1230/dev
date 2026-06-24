@@ -392,7 +392,7 @@
     </section>
     <section class="page" id="personal" hidden>
         <div class="game" id="canvas-container"></div>
-        <div class="reminder">
+        <div id="reminder" class="reminder">
             <div class="container-reminder">
                 <a href="#fav-dino" class="reminder-btn">Here is still something &#8595;</a>
             </div>
@@ -482,7 +482,42 @@
             </div>
         </div>
     </section>
-    <section class="page" id="contact" hidden>contact</section>
+    <section class="page" id="contact" hidden>
+        <div class="hero-contact">
+            <p>Contact Me</p>
+        </div>
+        <div class="form-container">
+            <form>
+                <div class="top">
+                    <div>
+                        <p>Name</p>
+                        <input type="text" required placeholder="Your identity">
+                    </div>
+                    <div>
+                        <p>Email or Discord</p>
+                        <input type="email" required placeholder="I promise i wont spam :sob:">
+                    </div>
+                </div>
+
+                <div class="middle">
+                    <textarea id="content" placeholder="Your message goes here"></textarea>
+                    <div class="counter-container">
+                        <span id="char-count">0</span>/200
+                    </div>
+                </div>
+
+                <div class="rock-bottom">
+                    <p>Email: complain.tamino.email@gmail.com</p>
+                    <p>Discord: Tamino1230</p>
+                    <p>Location: Austria</p>
+                </div>
+                
+                <div class="bottom">
+                    <button type="submit">Send Email &#8594;</button>
+                </div>
+            </form>
+        </div>
+    </section>
 
     <div id="gallery-modal" class="gallery-modal" onclick="closeGallery()">
         <span class="close-gallery">&times;</span>
@@ -494,6 +529,8 @@
     </div>
 
     <script src="app.js"></script>
+
+    <!-- GameScripts -->
     <script src="sketch.js"></script>
     <script src="src/p5.js/js/cursor.js"></script>
     <script src="src/p5.js/js/player.js"></script>

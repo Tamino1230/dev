@@ -5,6 +5,10 @@ let overlay;
 let blocks = [];
 let track = document.getElementById('track');
 let index = 0;
+const textarea = document.getElementById('content');
+const charCount = document.getElementById('char-count');
+const counterContainer = document.querySelector('.counter-container');
+const maxLength = 200;
 
 function moveSlider(direction) {
     const firstCard = track.querySelector('.card-draw');
@@ -226,9 +230,20 @@ function cycleText(elementId, words, interval = 2000) {
 // MAINNN
 document.addEventListener("DOMContentLoaded", (event) => {
     console.log("DOM fully loaded and parsed");
+    textarea.addEventListener('input', () => {
+        const currentLength = textarea.value.length;
+        
+        charCount.textContent = currentLength;
+        
+        if (currentLength >= maxLength * 0.9) {
+            counterContainer.classList.add('warning');
+        } else {
+            counterContainer.classList.remove('warning');
+        }
+    });
     // showStart();
     displayAge();
-    showPersonal();
+    showContact();
     createAnimationGrid();
     cycleText("visitor", ["Visitor", "Traveler", "Friend", "Dinosaur", "Alien", "Guest", "Human", "Fella"], 6700);
     cycleText("nickname", ["Tamino1230", "Dinosaur LOVER", "Tamii<3", "TamTam", "Gangle/Kinger", "This weird guy"], 4300); 
