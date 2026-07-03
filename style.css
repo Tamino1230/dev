@@ -61,6 +61,14 @@ body {
     font-family: ArchivoBlack;
 }
 
+#mobileMenu {
+    align-items: center;
+    border-bottom: 4px rgb(34, 34, 54) solid;
+
+
+    font-family: ArchivoBlack;
+}
+
 .nav-left {
     /* background-color: blue; */
     justify-content: left;
@@ -1039,4 +1047,128 @@ button:active {
     font-size: 35px;
     display: flex;
     justify-content: center; 
+}
+
+.spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Mobile */
+.menu-toggle {
+    display: none;
+}
+
+::-webkit-scrollbar {
+    background-color: var(--main-bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-text-highlighted);
+    border-radius: 25px;
+}
+
+@media (width > 768px) {
+    #mobileMenu {
+        visibility: hidden;
+    }
+}
+
+@media (max-width: 768px) {
+
+    
+
+    .menu-toggle {
+        display: block;
+        font-size: 32px;
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        margin-left: auto;
+    }
+
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        flex-wrap: nowrap; /* IMPORTANT */
+        padding: 18px 20px;
+    }
+
+
+    .nav-margin {
+        padding: 0;
+    }
+
+    .nav-right {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .nav-left {
+        width: auto;
+        flex: 1;
+    }
+    
+
+    .nav-right.open {
+        display: flex;
+    }
+
+    #start {
+        flex-direction: column;
+        gap: 40px;
+        padding: 30px 20px;
+        text-align: center;
+        min-height: auto;
+        font-size: 12px;
+    }
+
+    .profile-container{
+        width:180px;
+        height:180px;
+    }
+
+    .profile-img{
+        width:160px;
+        height:160px;
+    }
+
+    .animated-border{
+        width:160px;
+        height:160px;
+    }
+
+    .start-btns {
+        visibility: hidden;
+    }
+
+    .small {
+        font-size: 20px;
+    }
+
+    .light {
+        font-size: 35px;
+    }
+
+    .dark {
+        font-size: 35px;
+    }
 }

@@ -13,15 +13,62 @@
 <body>
     <!-- Navigation DIV-DIFF -->
     <div class="nav-container">
+
         <div class="nav-left nav-margin">
-            <a class="nav-btn tamino1230" onclick="showPage('start')">Tamino1230</a>
+            <a class="nav-btn tamino1230" onclick="showPage('start')">
+                Tamino1230
+            </a>
         </div>
-        <div class="nav-right nav-margin">
-            <a id="start-btn" class="nav-btn selected" onclick="showPage('start');">Home</a>
-            <a id="professional-btn" class="nav-btn" onclick="showPage('professional')">Professional</a>
-            <a id="personal-btn" class="nav-btn" onclick="showPage('personal')">Personal</a>
-            <a id="contact-btn" class="nav-btn" onclick="showPage('contact')">Contact</a>
+
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+        <div class="nav-right nav-margin" id="desktopMenu">
+
+            <a id="start-btn" class="nav-btn selected"
+                onclick="showPage('start'); closeMenu();">
+                Home
+            </a>
+
+            <a id="professional-btn" class="nav-btn"
+                onclick="showPage('professional'); closeMenu();">
+                Professional
+            </a>
+
+            <a id="personal-btn" class="nav-btn"
+                onclick="showPage('personal'); closeMenu();">
+                Personal
+            </a>
+
+            <a id="contact-btn" class="nav-btn"
+                onclick="showPage('contact'); closeMenu();">
+                Contact
+            </a>
+
         </div>
+    </div>
+
+    <div class="nav-right nav-margin" id="mobileMenu">
+
+        <a id="start-btn" class="nav-btn selected"
+            onclick="showPage('start'); closeMenu();">
+            Home
+        </a>
+
+        <a id="professional-btn" class="nav-btn"
+            onclick="showPage('professional'); closeMenu();">
+            Professional
+        </a>
+
+        <a id="personal-btn" class="nav-btn"
+            onclick="showPage('personal'); closeMenu();">
+            Personal
+        </a>
+
+        <a id="contact-btn" class="nav-btn"
+            onclick="showPage('contact'); closeMenu();">
+            Contact
+        </a>
+
     </div>
 
     <section class="page" id="start" hidden>
@@ -42,8 +89,8 @@
         </div>
 
         <div class="start-btns">
-            <a class="start-btn" onclick="showPage('professional');">View my work</a>
-            <a class="start-btn" onclick="showPage('personal');">View my hobbies</a>
+            <a id="work-btn" class="start-btn" onclick="showPage('professional');">View my work</a>
+            <a id="hobbies-btn" class="start-btn" onclick="showPage('personal');">View my hobbies</a>
         </div>
     </section>
     <section class="page" id="professional" hidden>
@@ -487,20 +534,20 @@
             <p>Contact Me</p>
         </div>
         <div class="form-container">
-            <form>
+            <form id="contact-form">
                 <div class="top">
                     <div>
                         <p>Name</p>
-                        <input type="text" required placeholder="Your identity">
+                        <input type="text" id="form-name" required placeholder="Your identity">
                     </div>
                     <div>
                         <p>Email or Discord</p>
-                        <input type="email" required placeholder="I promise i wont spam :sob:">
+                        <input type="text" id="form-contact" required placeholder="I promise i wont spam :sob:">
                     </div>
                 </div>
 
                 <div class="middle">
-                    <textarea id="content" placeholder="Your message goes here"></textarea>
+                    <textarea id="content" required placeholder="Your message goes here"></textarea>
                     <div class="counter-container">
                         <span id="char-count">0</span>/200
                     </div>
@@ -513,7 +560,10 @@
                 </div>
                 
                 <div class="bottom">
-                    <button type="submit">Send Email &#8594;</button>
+                    <button type="submit" id="submit-btn">
+                        <span id="btn-text">Send Email &#8594;</span>
+                        <span id="btn-spinner" class="spinner" style="display: none;"></span>
+                    </button>
                 </div>
             </form>
         </div>

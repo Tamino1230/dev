@@ -309,9 +309,9 @@ function draw() {
         upsidePopup.visible = true;
     }
 
-    if (keyIsDown("f")) {
-        screenAnimation();
-    }
+    // if (keyIsDown("f")) {
+    //     screenAnimation();
+    // }
 
     let targetCameraY = player.y - height / 2;
     cameraY = lerp(cameraY, targetCameraY, 0.1);

@@ -227,6 +227,52 @@ function cycleText(elementId, words, interval = 2000) {
   }, interval);
 }
 
+function buildSubmit() {
+    document.getElementById("contact-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById("form-name").value;
+        const contact = document.getElementById("form-contact").value;
+        const content = document.getElementById("content").value;
+
+        const submitBtn = document.getElementById("submit-btn");
+        const btnText = document.getElementById("btn-text");
+        const btnSpinner = document.getElementById("btn-spinner");
+
+        submitBtn.disabled = true;
+        btnText.style.display = "none";
+        btnSpinner.style.display = "inline-block";
+
+        const params = new URLSearchParams({ name, contact, content });
+        const apiUrl = `http://localhost:5173/submit?${params.toString()}`;
+
+        try {
+            const response = await fetch(apiUrl, { method: "GET" });
+            const data = await response.json();
+
+            if (data.code === 200) {
+                alert("Successfully sent!");
+                document.getElementById("contact-form").reset();
+                document.getElementById("char-count").innerText = "0";
+            } else {
+                alert(`Error: ${data.message}`);
+            }
+        } catch (err) {
+            console.error(err);
+            alert("An error occurred while connecting to the server.");
+        } finally {
+            submitBtn.disabled = false;
+            btnText.style.display = "inline";
+            btnSpinner.style.display = "none";
+        }
+    });
+}
+
+function toggleMenu() {
+    const menu = document.getElementById("mobileMenu");
+    menu.classList.toggle("open");
+}
+
 // MAINNN
 document.addEventListener("DOMContentLoaded", (event) => {
     console.log("DOM fully loaded and parsed");
@@ -243,7 +289,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
     });
     // showStart();
     displayAge();
-    showContact();
+    showStart();
+    buildSubmit();
     createAnimationGrid();
     cycleText("visitor", ["Visitor", "Traveler", "Friend", "Dinosaur", "Alien", "Guest", "Human", "Fella"], 6700);
     cycleText("nickname", ["Tamino1230", "Dinosaur LOVER", "Tamii<3", "TamTam", "Gangle/Kinger", "This weird guy"], 4300); 
