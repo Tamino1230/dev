@@ -137,6 +137,7 @@ body {
 /* Sections / Pages */
 .page {
     color: white;
+    margin-top: -100px;
 }
 
 /* Start Page */
