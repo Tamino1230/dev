@@ -9,6 +9,7 @@ const textarea = document.getElementById('content');
 const charCount = document.getElementById('char-count');
 const counterContainer = document.querySelector('.counter-container');
 const maxLength = 200;
+const api = "https://api.tamino1230.me/"
 
 function moveSlider(direction) {
     const firstCard = track.querySelector('.card-draw');
@@ -92,29 +93,39 @@ function unselectNavBtns() {
     document.getElementById("professional-btn").className = "nav-btn";
     document.getElementById("personal-btn").className = "nav-btn";
     document.getElementById("contact-btn").className = "nav-btn";
+
+    // mobile
+    document.getElementById("start-btn-mobile").className = "nav-btn";
+    document.getElementById("professional-btn-mobile").className = "nav-btn";
+    document.getElementById("personal-btn-mobile").className = "nav-btn";
+    document.getElementById("contact-btn-mobile").className = "nav-btn";
 }
 
 function showStart() {
     document.getElementById("start").hidden = false;
     document.getElementById("start-btn").className = "nav-btn selected";
+    document.getElementById("start-btn-mobile").className = "nav-btn selected";
     currentPage = "start";
 }
 
 function showProfessional() {
     document.getElementById("professional").hidden = false;
     document.getElementById("professional-btn").className = "nav-btn selected";
+    document.getElementById("professional-btn-mobile").className = "nav-btn selected";
     currentPage = "professional";
 }
 
 function showPersonal() {
     document.getElementById("personal").hidden = false;
     document.getElementById("personal-btn").className = "nav-btn selected";
+    document.getElementById("personal-btn-mobile").className = "nav-btn selected";
     currentPage = "personal";
 }
 
 function showContact() {
     document.getElementById("contact").hidden = false;
     document.getElementById("contact-btn").className = "nav-btn selected";
+    document.getElementById("contact-btn-mobile").className = "nav-btn selected";
     currentPage = "contact";
 }
 
@@ -244,7 +255,7 @@ function buildSubmit() {
         btnSpinner.style.display = "inline-block";
 
         const params = new URLSearchParams({ name, contact, content });
-        const apiUrl = `http://localhost:5173/submit?${params.toString()}`;
+        const apiUrl = `${api}submit?${params.toString()}`;
 
         try {
             const response = await fetch(apiUrl, { method: "GET" });
@@ -273,6 +284,37 @@ function toggleMenu() {
     menu.classList.toggle("open");
 }
 
+function closeMenu() {
+    const menu = document.getElementById("mobileMenu");
+    menu.classList.remove("open");
+}
+
+async function awakeServerFromSleep() {
+    const modal = document.getElementById("statusModal");
+
+    // Show loading state immediately
+    modal.className = "status loading";
+    modal.innerHTML = "Awaking from sleepmode";
+
+    try {
+        const response = await fetch(api);
+
+        if (!response.ok) {
+            modal.className = "status off";
+            modal.innerHTML = "Server not Reachable";
+            return false;
+        }
+
+        modal.className = "status on";
+        modal.innerHTML = "Online";
+        return true;
+    } catch (err) {
+        modal.className = "status off";
+        modal.innerHTML = "Server not Reachable";
+        return false;
+    }
+}
+
 // MAINNN
 document.addEventListener("DOMContentLoaded", (event) => {
     console.log("DOM fully loaded and parsed");
@@ -288,6 +330,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }
     });
     // showStart();
+    awakeServerFromSleep();
     displayAge();
     showStart();
     buildSubmit();

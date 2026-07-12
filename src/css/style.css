@@ -19,12 +19,12 @@ html, body {
 
 @font-face {
     font-family: ArchivoBlack;
-    src: url("src/fonts/Archivo_Black/ArchivoBlack-Regular.ttf");
+    src: url("../fonts/Archivo_Black/ArchivoBlack-Regular.ttf");
 }
 
 @font-face {
     font-family: LatoBlack;
-    src: url("src/fonts/Lato/Lato-Black.ttf");
+    src: url("../fonts/Lato/Lato-Black.ttf");
 }
 
 * {
@@ -137,7 +137,7 @@ body {
 /* Sections / Pages */
 .page {
     color: white;
-    margin-top: -100px;
+    /* margin-top: -100px; */
 }
 
 /* Start Page */
@@ -994,6 +994,10 @@ textarea {
     justify-content: flex-end;
 }
 
+.status-modal {
+    margin-right: 20%;
+}
+
 button {
     background-color: var(--secondary-text-highlighted);
     color: white;
@@ -1018,7 +1022,13 @@ button:active {
     transform: scale(0.98);
 }
 
+.compability-reminder {
+    display: none;
+}
+
 @media (max-width: 480px) {
+
+    
     .top {
         flex-direction: column;
         gap: 1.5rem;
@@ -1081,15 +1091,47 @@ button:disabled {
     border-radius: 25px;
 }
 
+.status-modal {
+    padding-top: 12px;
+    /* padding-bottom: 5px; */
+}
+
+.status.off {
+    color: red;
+}
+
+.status.on {
+    color: green;
+}
+
+.status.loading {
+    color: orangered;
+}
+
 @media (width > 768px) {
     #mobileMenu {
         visibility: hidden;
     }
+
+    .page {
+        margin-top: -100px;
+    }
 }
 
 @media (max-width: 768px) {
+    .compability-reminder {
+        display: flex;
+        background: rgb(205, 57, 12);
+        font-family: LatoBlack;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+        padding: 10px 0px 10px 0px;
+    }
 
-    
+    .emoji {
+        padding-bottom: 20px;
+    }
 
     .menu-toggle {
         display: block;

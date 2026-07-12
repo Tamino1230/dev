@@ -5,12 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tamino1230 Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="src/css/style.css">
     <script src="src/p5.js/js/p5.min.js"></script>
     <script src="src/p5.js/js/addons/p5.sound.min.js"></script>
 </head>
 
 <body>
+    <div class="compability-reminder ">
+        <p><span class="emoji">⚠️</span> This website isnt optimised for mobile</p>
+    </div>
     <!-- Navigation DIV-DIFF -->
     <div class="nav-container">
 
@@ -49,22 +52,22 @@
 
     <div class="nav-right nav-margin" id="mobileMenu">
 
-        <a id="start-btn" class="nav-btn selected"
+        <a id="start-btn-mobile" class="nav-btn selected"
             onclick="showPage('start'); closeMenu();">
             Home
         </a>
 
-        <a id="professional-btn" class="nav-btn"
+        <a id="professional-btn-mobile" class="nav-btn"
             onclick="showPage('professional'); closeMenu();">
             Professional
         </a>
 
-        <a id="personal-btn" class="nav-btn"
+        <a id="personal-btn-mobile" class="nav-btn"
             onclick="showPage('personal'); closeMenu();">
             Personal
         </a>
 
-        <a id="contact-btn" class="nav-btn"
+        <a id="contact-btn-mobile" class="nav-btn"
             onclick="showPage('contact'); closeMenu();">
             Contact
         </a>
@@ -560,6 +563,9 @@
                 </div>
                 
                 <div class="bottom">
+                    <div class="status-modal">
+                        <p>Server Connection: <span id="statusModal" class="status off">Offline</span></p>
+                    </div>
                     <button type="submit" id="submit-btn">
                         <span id="btn-text">Send Email &#8594;</span>
                         <span id="btn-spinner" class="spinner" style="display: none;"></span>
@@ -578,10 +584,10 @@
         <button class="gallery-nav next-img" onclick="event.stopPropagation(); changeGalleryImage(1);">&rarr;</button>
     </div>
 
-    <script src="app.js"></script>
+    <script src="src/js/app.js"></script>
 
     <!-- GameScripts -->
-    <script src="sketch.js"></script>
+    <script src="src/js/sketch.js"></script>
     <script src="src/p5.js/js/cursor.js"></script>
     <script src="src/p5.js/js/player.js"></script>
     <script src="src/p5.js/js/animationPlayer.js"></script>
@@ -611,6 +617,7 @@
             <a href="http://github.tamino1230.me" target="_blank">GitHub</a>
             <a href="http://discord.tamino1230.me" target="_blank">Discord</a>
             <a href="http://twitter.tamino1230.me" target="_blank">Twitter</a>
+            <a href="https://github.com/Tamino1230/dev" target="_blank">Source Code</a>
         </div>
 
     </div>

@@ -352,10 +352,11 @@ function draw() {
     wHintHelper.update();
     // cursorInspectPopup.update();
 
-    showDebugCursor();
+    // disable debug cursor
+    // showDebugCursor();
 
     if (player.y >= 1070) {
-        disaster()
+        setTimeout(disaster, 1500);
     }
 
 }
