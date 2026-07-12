@@ -297,7 +297,7 @@ async function awakeServerFromSleep() {
     modal.innerHTML = "Awaking from sleepmode";
 
     try {
-        const response = await fetch(api);
+        const response = await fetch(`${api}ping`);
 
         if (!response.ok) {
             modal.className = "status off";
