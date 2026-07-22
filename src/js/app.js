@@ -215,7 +215,7 @@ function displayAge() {
     let now = new Date();
     let past = new Date("July 17, 2009");
 
-    let years = now.getFullYear() - past.getFullYear() -1;
+    let years = now.getFullYear() - past.getFullYear();
 
     document.getElementById("years-old").innerText = `${years} years`
 }
