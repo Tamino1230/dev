@@ -134,7 +134,7 @@ function toggleSong() {
 
     if (isVisibleInCamera) {
         songIsPlaying = !songIsPlaying
-        if (songIsPlaying) {
+        if (songIsPlaying && currentPage === "personal") {
             song.play();
         } else {
             song.stop();
@@ -302,6 +302,10 @@ async function setup() {
 
 function draw() {
     background(bgColor);
+
+    if (currentPage != "personal") {
+        song.stop();
+    }
 
     if (keyIsDown("w")) {
         buildLevel(true, grey=chaos);
