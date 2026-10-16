@@ -9,7 +9,7 @@ const textarea = document.getElementById('content');
 const charCount = document.getElementById('char-count');
 const counterContainer = document.querySelector('.counter-container');
 const maxLength = 200;
-const api = "https://api.tamino1230.me/"
+const api = "https://api.dinosauwr.com/"
 
 function moveSlider(direction) {
     const firstCard = track.querySelector('.card-draw');
