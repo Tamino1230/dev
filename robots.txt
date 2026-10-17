@@ -1,6 +1,7 @@
 User-agent: *
-Disallow:
+Disallow: /src/images/Dinos/*
 Allow: /$
 Allow: /index.html
 Allow: /src/images/*
 Allow: /src/images/favs/*
+Allow: /portfolio.html

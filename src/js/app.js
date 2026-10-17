@@ -317,7 +317,7 @@ async function awakeServerFromSleep() {
 
 function hasURLParameters() {
     const params = new URLSearchParams(window.location.search);
-
+    hidePages();
     const page = params.get("instant");
     if (!page) return false;
 
