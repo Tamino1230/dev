@@ -1,0 +1,255 @@
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+body {
+    background: #101b19;
+}
+
+#dino-world {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    isolation: isolate;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(9, 18, 19, 0.15),
+            rgba(5, 12, 10, 0.75)
+        ),
+        radial-gradient(
+            ellipse at 50% 65%,
+            #66775a 0%,
+            #354c3b 40%,
+            #172a26 78%,
+            #091311 100%
+        );
+}
+
+#dino-world::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 60%,
+            rgba(183, 201, 139, 0.18),
+            transparent 55%
+        );
+
+    pointer-events: none;
+}
+
+.background-fog {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(7, 15, 12, 0.8),
+            transparent 45%
+        );
+
+    opacity: 0.8;
+}
+
+#dino-stage {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.dino {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: var(--dino-width, 900px);
+    height: auto;
+
+    will-change: left, top;
+    pointer-events: none;
+}
+
+.dino img {
+    display: block;
+    width: 100%;
+    height: auto;
+
+    user-select: none;
+    -webkit-user-drag: none;
+
+    transform-origin: 50% 75%;
+    will-change: transform;
+}
+
+.dino.idle img {
+    animation: breathe 2.4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-5px) rotate(-0.5deg);
+    }
+}
+
+#dino-world::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+
+    background: radial-gradient(
+        ellipse at center,
+        transparent 45%,
+        rgba(0, 0, 0, 0.48) 100%
+    );
+}
+
+.foreground {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.buttons {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    top: 85%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+}
+
+.btn {
+    position: relative;
+    overflow: hidden;
+
+    color: #e8f0d9;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    padding: 14px 28px;
+    border: 1px solid #607c42;
+    border-radius: 8px;
+
+    background: linear-gradient(
+        145deg,
+        #354c2b,
+        #1b3020
+    );
+
+    box-shadow:
+        0 4px 0 #101d14,
+        0 8px 20px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(200, 230, 150, 0.12);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        color 0.25s ease;
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        115deg,
+        transparent 20%,
+        rgba(195, 230, 120, 0.2) 50%,
+        transparent 80%
+    );
+
+    transform: translateX(-120%);
+    transition: transform 0.5s ease;
+    pointer-events: none;
+}
+
+.btn:hover {
+    color: #f4ffd9;
+    background: linear-gradient(
+        145deg,
+        #526f35,
+        #304a27
+    );
+
+    border-color: #b2d66c;
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 8px 0 #101d14,
+        0 12px 28px rgba(116, 165, 62, 0.25),
+        0 0 18px rgba(151, 201, 87, 0.18);
+}
+
+.btn:hover::before {
+    transform: translateX(120%);
+}
+
+.btn:active {
+    transform: translateY(2px);
+
+    box-shadow:
+        0 2px 0 #101d14,
+        0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn:focus-visible {
+    outline: 2px solid #c5e995;
+    outline-offset: 5px;
+}
+
+.small-text {
+    color: white;
+    font-family: Arial;
+    font-size: 12px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    top: 92%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+}

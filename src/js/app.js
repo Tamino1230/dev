@@ -315,6 +315,32 @@ async function awakeServerFromSleep() {
     }
 }
 
+function hasURLParameters() {
+    const params = new URLSearchParams(window.location.search);
+
+    const page = params.get("instant");
+    if (!page) return false;
+
+    switch (page.toLowerCase()) {
+        case "professional":
+            showProfessional();
+            break;
+
+        case "personal":
+            showPersonal();
+            break;
+
+        case "contact":
+            showContact();
+            break;
+
+        default:
+            return false;
+    }
+
+    return true;
+}
+
 // MAINNN
 document.addEventListener("DOMContentLoaded", (event) => {
     console.log("DOM fully loaded and parsed");
@@ -329,10 +355,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
             counterContainer.classList.remove('warning');
         }
     });
-    // showStart();
+
     awakeServerFromSleep();
     displayAge();
-    showStart();
+    if (!hasURLParameters()) {
+        showStart();
+    }
     buildSubmit();
     createAnimationGrid();
     cycleText("visitor", ["Visitor", "Traveler", "Friend", "Dinosaur", "Alien", "Guest", "Human", "Fella"], 6700);
